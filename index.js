@@ -1,14 +1,13 @@
 import express from 'express'
 import router from './routes/router.js'
-import bodyParser from 'body-parser'
+
 const Port = 3000
 const app = express()
 
-app.use(router)
-app.use(bodyParser.urlencoded)
+app.use("/client", router)
 
 app.use("/",(req,res, next)=> {
-    res.status(404).send("Not found what youre looking for")
+    res.redirect('/client/read')
     next()
 })
 

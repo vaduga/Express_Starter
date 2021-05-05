@@ -10,7 +10,7 @@ router.get('/read', (req,res)=> {
     res.status(200).send(`
     
     <h1>Read</h1>
-    <form action="/write" method="POST"> 
+    <form action="/client/write" method="POST"> 
 
     <input type="text" name="name"/>
     <input type="submit"/>
@@ -21,7 +21,7 @@ router.get('/read', (req,res)=> {
     `)
 })
 
-router.use('/write', (req,res)=> {
+router.post('/write', (req,res)=> {
     console.dir(req.body.name);
     res.status(200).send(`
     You've sent ${req.body.name}
@@ -30,10 +30,7 @@ router.use('/write', (req,res)=> {
 })
 
 
-router.use("/",(req,res, next)=> {
-    res.redirect('/read')
-    next()
-})
+
 
 
 export default router
